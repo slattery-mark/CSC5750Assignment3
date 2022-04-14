@@ -102,7 +102,7 @@ button {
     width: 100%;
 }
 
-.registered-timeslot:hover {
+.calendar__registered-timeslot:hover {
     background-color: var(--clr-secondary);
 }
 
