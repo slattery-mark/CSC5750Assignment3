@@ -16,13 +16,6 @@ body {
     min-height: 100vh;
 }
 
-button {
-    border: none;
-    cursor: pointer;
-    font: inherit;
-    padding: 0;
-}
-
 .schedule-pane {
     background-color: var(--clr-tertiary);
     min-height: 100%;
@@ -31,8 +24,39 @@ button {
 
 .registration-pane {
     background-color: var(--clr-secondary);
+    color: var(--clr-tertiary);
+    display: flex;
+    justify-content: center;
     min-height: 100%;
     width: 50%;
+}
+
+
+@media screen and (max-width: 600px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .schedule-pane {
+        background-color: var(--clr-tertiary);
+        height: 100vh;
+        width: 100%;
+    }
+    
+    .registration-pane {
+        background-color: var(--clr-secondary);
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
 }
 
 /* Calendar */
@@ -42,9 +66,6 @@ button {
     min-height: 800px;
     table-layout: fixed;
     width: 100%;
-}
-.calendar-subtable {
-    height: 33%;
 }
 
 .calendar, .calendar th, .calendar td {
@@ -68,10 +89,11 @@ button {
     max-height: 5.56%;
 }
 
-.registered-timeslot {
+.calendar__registered-timeslot {
     background-color: var(--clr-primary);
+    box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0 7px;
     color: var(--clr-tertiary);
     font-size: clamp(1rem, 2vw, 1.2rem);
     height: 100%;
@@ -82,4 +104,42 @@ button {
 
 .registered-timeslot:hover {
     background-color: var(--clr-secondary);
+}
+
+/* Registration Form */
+.registration-form {
+    box-sizing: border-box;
+    width: 90%;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.registration-form h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.registration-form fieldset {
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+}
+
+.registration-form label {
+    display: inline-block;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-weight: bold;
+    min-width: 100px;
+}
+
+.registration-form input, .registration-form select {
+    box-sizing: border-box;
+    border: 2px solid var(--clr-primary);
+    font-size: clamp(.9rem, 2vw, 1rem);
+    height: 32px;
+    margin: 0 7px;
+    padding: 0 7px;
+    width: 100%;
 }

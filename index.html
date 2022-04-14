@@ -88,7 +88,7 @@
             </tr>
             <tr>
                 <th rowspan="6">8:00 - 9:00</th>
-                <td><button class="registered-timeslot">Student Name</button></td>
+                <td><button class="calendar__registered-timeslot">Student Name</button></td>
                 <td></td>
             </tr>
             <tr>
@@ -114,7 +114,43 @@
         </table>
     </div>
     <div class="registration-pane">
-
+        <form class="registration-form">
+            <h1>Register</h1>
+            <fieldset>
+                <label for="timeframe">Timeframe</label>
+                <select id="timeframe" name="timeframe">
+                    <option value="28:1">April 28th, 6:00 - 7:00pm</option>
+                    <option value="28:2">April 28th, 7:00 - 8:00pm</option>
+                    <option value="28:3">April 28th, 8:00 - 9:00pm</option>
+                    <option value="29:1">April 29th, 6:00 - 7:00pm</option>
+                    <option value="29:2">April 29th, 7:00 - 8:00pm</option>
+                    <option value="29:3">April 29th, 8:00 - 9:00pm</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <label for="project-title">Project Title</label>
+                <input type="text" id="project-title" name="project-title" placeholder="Title">
+            </fieldset>
+            <fieldset>
+                <label for="name">Name</label>
+                <input type="text" id="fname" name="name" placeholder="First Name">
+                <input type="text" id="lname" name="name" placeholder="Last Name">
+            </fieldset>
+            <fieldset>
+                <label for="student-id">Student ID</label>
+                <input type="text" id="student-id" name="student-id" placeholder="###">
+            </fieldset>
+            <fieldset>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Email">
+            </fieldset>
+            <fieldset>
+                <label for="phone">Phone</label>
+                <input type="text" id="first-digit-group" name="phone" placeholder="###">
+                <input type="text" id="second-digit-group" name="phone" placeholder="###">
+                <input type="text" id="third-digit-group" name="phone" placeholder="###">
+            </fieldset>
+        </form>
     </div>
 </body>
 
