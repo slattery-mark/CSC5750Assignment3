@@ -1,20 +1,9 @@
 <?php
-    // credentials
-    $hostname = 'localhost';
-    $username = 'mark';
-    $password = '1234';
-    $database = 'CSC5750Assignment3';
+    // connect to database
+    $conn = require 'scripts/connect_to_db.php';
 
-    // connect to DB
-    try {
-        $conn = mysqli_connect($hostname, $username, $password, $database);
-    } 
-    catch (Exception $e) {
-        echo nl2br("Connection error:\n" . $e);
-    }
-
-    // Queries
-    $timeframes_query = "SELECT date_time, available_seats FROM timeslots";
+    // query for timeframes
+    $timeframes_query = "SELECT date_time, available_seats FROM timeframes";
     $timeframes_results = mysqli_query($conn, $timeframes_query);
 ?>
 
@@ -143,13 +132,12 @@
             <h1>Register</h1>
             <fieldset>
                 <label for="start_time">Start Time</label>
-
                 <select id="start_time" name="start_time">
                     <?php
                         $i = 1;
                         foreach($timeframes_results as $timeframe) { 
                             $date = date_create($timeframe['date_time']);
-                            echo '<option value="timeframe' . $i . '">';
+                            echo '<option value="' . $timeframe['date_time'] . '">';
                             echo date_format($date, 'm-d-Y g:i A') . ' (' . $timeframe['available_seats'] . ' seats remaining)';
                             echo '</option>';
                             $i++;
@@ -159,16 +147,16 @@
             </fieldset>
             <fieldset>
                 <label for="project-title">Project Title</label>
-                <input type="text" id="project-title" name="project-title" placeholder="Title" required>
+                <input type="text" id="project-title" name="project_title" placeholder="Title" required>
             </fieldset>
             <fieldset>
                 <label for="name">Name</label>
-                <input type="text" id="fname" name="name" placeholder="First Name" required>
-                <input type="text" id="lname" name="name" placeholder="Last Name" required>
+                <input type="text" id="fname" name="name[fname]" placeholder="First Name" required>
+                <input type="text" id="lname" name="name[lname]" placeholder="Last Name" required>
             </fieldset>
             <fieldset>
                 <label for="student-id">Student ID</label>
-                <input type="text" id="student-id" name="student-id" placeholder="###" required>
+                <input type="text" id="student-id" name="student_id" placeholder="###" required>
             </fieldset>
             <fieldset>
                 <label for="email">Email</label>
@@ -176,9 +164,9 @@
             </fieldset>
             <fieldset>
                 <label for="phone">Phone</label>
-                <input type="text" id="first-digit-group" name="phone" placeholder="###" required>
-                <input type="text" id="second-digit-group" name="phone" placeholder="###" required>
-                <input type="text" id="third-digit-group" name="phone" placeholder="####" required>
+                <input type="text" id="first-digit-group" name="phone[first_digit_group]" placeholder="###" required>
+                <input type="text" id="second-digit-group" name="phone[second_digit_group]" placeholder="###" required>
+                <input type="text" id="third-digit-group" name="phone[third_digit_group]" placeholder="####" required>
             </fieldset>
             <button type="submit" id="registration-form__submit-btn">Submit</button>
         </form>
