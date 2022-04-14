@@ -131,6 +131,7 @@ input, select {
 .popup__table, .popup__table th, .popup__table td {
     border: none;
     color: black;
+    font-size: 1rem;
     text-align: left;
 }
 
