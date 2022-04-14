@@ -1,0 +1,121 @@
+<!-- <?php
+    // credentials
+    $hostname = 'localhost';
+    $username = 'mark';
+    $password = '1234';
+    $database = 'CSC5750Assignment3';
+
+    // connect to DB
+    try {
+        $conn = mysqli_connect($hostname, $username, $password, $database);
+    } 
+    catch (Exception $e) {
+        echo nl2br("Connection error:\n" . $e);
+    }
+
+    // Queries
+
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- <?php include('templates/head.php'); ?> -->
+
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="schedule-pane">
+        <table class="calendar">
+            <tr>
+                <th>Timeframe</th>
+                <th>April 28</th>
+                <th>April 29</th>
+            </tr>
+            <tr>
+                <th rowspan="6">6:00 - 7:00</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th rowspan="6">7:00 - 8:00</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th rowspan="6">8:00 - 9:00</th>
+                <td><button class="registered-timeslot">Student Name</button></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="registration-pane">
+
+    </div>
+</body>
+
+</html>

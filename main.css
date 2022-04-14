@@ -1,0 +1,85 @@
+:root {
+    --clr-primary: #33618C;
+    --clr-secondary: #6593BD;
+    --clr-tertiary: #FFFFFF;
+    --clr-input-placeholder: #B0B0B0;
+
+    --ff-primary: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    font-family: var(--ff-primary);
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
+.schedule-pane {
+    background-color: var(--clr-tertiary);
+    min-height: 100%;
+    width: 50%;
+}
+
+.registration-pane {
+    background-color: var(--clr-secondary);
+    min-height: 100%;
+    width: 50%;
+}
+
+/* Calendar */
+.calendar {
+    border-collapse: collapse;
+    height: 100%;
+    min-height: 800px;
+    table-layout: fixed;
+    width: 100%;
+}
+.calendar-subtable {
+    height: 33%;
+}
+
+.calendar, .calendar th, .calendar td {
+    border: 2px solid var(--clr-primary);
+}
+
+.calendar th {
+    color: var(--clr-primary);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    height: 2.6875rem;
+    width: 33%;
+}
+
+.calendar tr {
+    overflow: hidden;
+    height: calc(100% / 19);
+}
+
+.calendar td {
+    padding: 0;
+    max-height: 5.56%;
+}
+
+.registered-timeslot {
+    background-color: var(--clr-primary);
+    margin: 0;
+    padding: 0;
+    color: var(--clr-tertiary);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    height: 100%;
+    text-align: center;
+    transition: .25s;
+    width: 100%;
+}
+
+.registered-timeslot:hover {
+    background-color: var(--clr-secondary);
+}
