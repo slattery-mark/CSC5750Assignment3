@@ -184,3 +184,18 @@ input, select {
     padding: 0 7px;
     width: 100%;
 }
+
+#registration-form__submit-btn {
+    background-color: var(--clr-primary);
+    border: 2px solid var(--clr-primary);
+    box-sizing: border-box;
+    color: var(--clr-tertiary);
+    cursor: pointer;
+    padding: 7px 0;
+    font: inherit;
+    transition: .25s;
+}
+
+#registration-form__submit-btn:hover {
+    background-color: var(--clr-secondary);
+}
