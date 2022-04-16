@@ -128,7 +128,7 @@
         </table>
     </div>
     <div class="registration-pane">
-        <form class="registration-form" action="scripts/submit_form.php" method="post">
+        <form class="registration-form" action="scripts/check_duplicate.php" method="post">
             <h1>Register</h1>
             <fieldset>
                 <label for="start_time">Start Time</label>
@@ -137,7 +137,7 @@
                         $i = 1;
                         foreach($timeframes_results as $timeframe) { 
                             $date = date_create($timeframe['date_time']);
-                            echo '<option value="' . $timeframe['date_time'] . '">';
+                            echo '<option value="' . $i . '">';
                             echo date_format($date, 'm-d-Y g:i A') . ' (' . $timeframe['available_seats'] . ' seats remaining)';
                             echo '</option>';
                             $i++;
