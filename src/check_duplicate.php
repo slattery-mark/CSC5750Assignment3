@@ -11,7 +11,7 @@
     $student_id = $_POST['student_id'];
     $conn = require 'connect_to_db.php';
 
-    $sql = "SELECT student_id FROM studentprojects WHERE student_id = '$student_id';";
+    $sql = "SELECT student_id FROM studentprojects WHERE student_id = $student_id;";
     $query = mysqli_query($conn, $sql);
     mysqli_close($conn);
     
