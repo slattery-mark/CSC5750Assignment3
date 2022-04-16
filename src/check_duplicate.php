@@ -13,6 +13,7 @@
 
     $sql = "SELECT student_id FROM studentprojects WHERE student_id = '$student_id';";
     $query = mysqli_query($conn, $sql);
+    mysqli_close($conn);
     
     $resCount = mysqli_num_rows($query);
     if ($resCount > 0) {

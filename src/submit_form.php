@@ -16,6 +16,7 @@
     $conn = require 'connect_to_db.php';
     
     mysqli_multi_query($conn, $sql);
+    mysqli_close($conn);
     
     // route back to index.php
     if (isset($_SERVER["HTTP_REFERER"])) {
