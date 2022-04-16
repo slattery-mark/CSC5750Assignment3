@@ -1,6 +1,6 @@
 <?php
     // connect to database
-    $conn = require 'scripts/connect_to_db.php';
+    $conn = require 'src/connect_to_db.php';
 
     // query for timeframes
     $timeframes_query = "SELECT date_time, available_seats FROM timeframes";
@@ -128,7 +128,7 @@
         </table>
     </div>
     <div class="registration-pane">
-        <form class="registration-form" action="scripts/check_duplicate.php" method="post">
+        <form class="registration-form" action="src/check_duplicate.php" method="post">
             <h1>Register</h1>
             <fieldset>
                 <label for="start_time">Start Time</label>
