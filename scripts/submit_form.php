@@ -1,13 +1,4 @@
 <?php 
-    // safeguard against SQL injection
-    function preventSQLInjection(&$fields) {
-        foreach ($fields as &$input) {
-            is_array($input) ? preventSQLInjection($input) : $input = addslashes($input);
-        }
-    }
-
-    preventSQLInjection($_POST);
-
     // retrieve submitted data
     $slot_id = $_POST['start_time'];
     $project_title = $_POST['project_title'];

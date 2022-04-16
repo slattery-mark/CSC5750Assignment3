@@ -134,13 +134,15 @@
                 <label for="start_time">Start Time</label>
                 <select id="start_time" name="start_time">
                     <?php
-                        $i = 1;
+                        $i = 0;
                         foreach($timeframes_results as $timeframe) { 
-                            $date = date_create($timeframe['date_time']);
-                            echo '<option value="' . $i . '">';
-                            echo date_format($date, 'm-d-Y g:i A') . ' (' . $timeframe['available_seats'] . ' seats remaining)';
-                            echo '</option>';
                             $i++;
+                            if ($timeframe['available_seats'] > 0) {
+                                $date = date_create($timeframe['date_time']);
+                                echo '<option value="' . $i . '">';
+                                echo date_format($date, 'm-d-Y g:i A') . ' (' . $timeframe['available_seats'] . ' seats remaining)';
+                                echo '</option>';
+                            }
                         }
                     ?>
                 </select>
