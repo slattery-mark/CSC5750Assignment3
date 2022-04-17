@@ -1,12 +1,13 @@
 <?php
-    $student_id = $_POST['student_id'];
-    $conn = require 'connect_to_db.php';
+    include_once 'database.php';
+    session_start();
 
-    // prepared statement to prevent SQL injection
-    $stmt = mysqli_prepare($conn, "SELECT student_id FROM studentprojects WHERE student_id = ?;");
-    mysqli_stmt_bind_param($stmt, "i", $student_id);
-    mysqli_stmt_execute($stmt);
-    $res = mysqli_stmt_get_result($stmt);
+    $student_id = $_POST['student_id'];
+    
+    $db = $_SESSION['db'];
+    $sql = "SELECT student_id FROM studentprojects WHERE student_id = ?;";
+    $types = "i";
+    $res = $db->execute_prepared_stmt($sql, $types, $student_id);
     
     $resCount = mysqli_num_rows($res);
     if ($resCount > 0) {

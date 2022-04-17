@@ -1,17 +1,4 @@
-<?php
-    // connect to database
-    $conn = require 'src/connect_to_db.php';
-
-    // query for timeframes
-    $timeframes_query = "SELECT date_time, available_seats FROM timeframes";
-    $timeframes_results = mysqli_query($conn, $timeframes_query);
-    
-    // query for student projects
-    $student_project_results = require 'src/retrieve_student_projects.php';
-    
-    // place registered students on calendar
-    include 'src/generate_project_div.php';   
-?>
+<?php require 'src/data_layer.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,82 +15,82 @@
             <tr>
                 <th rowspan="6">6:00 - 7:00</th>
                 <td><?php if (count($student_project_results[0]) > 0) generate_project_div($student_project_results[0][0]); ?></td>
-                <td><?php if (count($student_project_results[4]) > 0) generate_project_div($student_project_results[4][0]); ?></td>
+                <td><?php if (count($student_project_results[3]) > 0) generate_project_div($student_project_results[3][0]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[0]) > 1) generate_project_div($student_project_results[0][1]); ?></td>
-                <td><?php if (count($student_project_results[4]) > 1) generate_project_div($student_project_results[4][1]); ?></td>
+                <td><?php if (count($student_project_results[3]) > 1) generate_project_div($student_project_results[3][1]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[0]) > 2) generate_project_div($student_project_results[0][2]); ?></td>
-                <td><?php if (count($student_project_results[4]) > 2) generate_project_div($student_project_results[4][2]); ?></td>
+                <td><?php if (count($student_project_results[3]) > 2) generate_project_div($student_project_results[3][2]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[0]) > 3) generate_project_div($student_project_results[0][3]); ?></td>
-                <td><?php if (count($student_project_results[4]) > 3) generate_project_div($student_project_results[4][3]); ?></td>
+                <td><?php if (count($student_project_results[3]) > 3) generate_project_div($student_project_results[3][3]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[0]) > 4) generate_project_div($student_project_results[0][4]); ?></td>
-                <td><?php if (count($student_project_results[4]) > 4) generate_project_div($student_project_results[4][4]); ?></td>
+                <td><?php if (count($student_project_results[3]) > 4) generate_project_div($student_project_results[3][4]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[0]) > 5) generate_project_div($student_project_results[0][5]); ?></td>
-                <td><?php if (count($student_project_results[4]) > 5) generate_project_div($student_project_results[4][5]); ?></td>
+                <td><?php if (count($student_project_results[3]) > 5) generate_project_div($student_project_results[3][5]); ?></td>
             </tr>
             <tr>
                 <th rowspan="6">7:00 - 8:00</th>
                 <td><?php if (count($student_project_results[1]) > 0) generate_project_div($student_project_results[1][0]); ?></td>
-                <td><?php if (count($student_project_results[5]) > 0) generate_project_div($student_project_results[5][0]); ?></td>
+                <td><?php if (count($student_project_results[4]) > 0) generate_project_div($student_project_results[4][0]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[1]) > 1) generate_project_div($student_project_results[1][1]); ?></td>
-                <td><?php if (count($student_project_results[5]) > 1) generate_project_div($student_project_results[5][1]); ?></td>
+                <td><?php if (count($student_project_results[4]) > 1) generate_project_div($student_project_results[4][1]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[1]) > 2) generate_project_div($student_project_results[1][2]); ?></td>
-                <td><?php if (count($student_project_results[5]) > 2) generate_project_div($student_project_results[5][2]); ?></td>
+                <td><?php if (count($student_project_results[4]) > 2) generate_project_div($student_project_results[4][2]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[1]) > 3) generate_project_div($student_project_results[1][3]); ?></td>
-                <td><?php if (count($student_project_results[5]) > 3) generate_project_div($student_project_results[5][3]); ?></td>
+                <td><?php if (count($student_project_results[4]) > 3) generate_project_div($student_project_results[4][3]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[1]) > 4) generate_project_div($student_project_results[1][4]); ?></td>
-                <td><?php if (count($student_project_results[5]) > 4) generate_project_div($student_project_results[5][4]); ?></td>
+                <td><?php if (count($student_project_results[4]) > 4) generate_project_div($student_project_results[4][4]); ?></td>
             </tr>
             <tr>
                 <td><?php if (count($student_project_results[1]) > 5) generate_project_div($student_project_results[1][5]); ?></td>
-                <td><?php if (count($student_project_results[5]) > 5) generate_project_div($student_project_results[5][5]); ?></td>
+                <td><?php if (count($student_project_results[4]) > 5) generate_project_div($student_project_results[4][5]); ?></td>
             </tr>
             <tr>
                 <th rowspan="6">8:00 - 9:00</th>
-                <td><?php if (count($student_project_results[3]) > 0) generate_project_div($student_project_results[3][0]); ?></td>
+                <td><?php if (count($student_project_results[2]) > 0) generate_project_div($student_project_results[2][0]); ?></td>
                 <td><?php if (count($student_project_results[5]) > 0) generate_project_div($student_project_results[5][0]); ?></td>
             </tr>
             <tr>
-                <td><?php if (count($student_project_results[3]) > 1) generate_project_div($student_project_results[3][1]); ?></td>
+                <td><?php if (count($student_project_results[2]) > 1) generate_project_div($student_project_results[2][1]); ?></td>
                 <td><?php if (count($student_project_results[5]) > 1) generate_project_div($student_project_results[5][1]); ?></td>
             </tr>
             <tr>
-                <td><?php if (count($student_project_results[3]) > 2) generate_project_div($student_project_results[3][2]); ?></td>
+                <td><?php if (count($student_project_results[2]) > 2) generate_project_div($student_project_results[2][2]); ?></td>
                 <td><?php if (count($student_project_results[5]) > 2) generate_project_div($student_project_results[5][2]); ?></td>
             </tr>
             <tr>
-                <td><?php if (count($student_project_results[3]) > 3) generate_project_div($student_project_results[3][3]); ?></td>
+                <td><?php if (count($student_project_results[2]) > 3) generate_project_div($student_project_results[2][3]); ?></td>
                 <td><?php if (count($student_project_results[5]) > 3) generate_project_div($student_project_results[5][3]); ?></td>
             </tr>
             <tr>
-                <td><?php if (count($student_project_results[3]) > 4) generate_project_div($student_project_results[3][4]); ?></td>
+                <td><?php if (count($student_project_results[2]) > 4) generate_project_div($student_project_results[2][4]); ?></td>
                 <td><?php if (count($student_project_results[5]) > 4) generate_project_div($student_project_results[5][4]); ?></td>
             </tr>
             <tr>
-                <td><?php if (count($student_project_results[3]) > 5) generate_project_div($student_project_results[3][5]); ?></td>
+                <td><?php if (count($student_project_results[2]) > 5) generate_project_div($student_project_results[2][5]); ?></td>
                 <td><?php if (count($student_project_results[5]) > 5) generate_project_div($student_project_results[5][5]); ?></td>
             </tr>
         </table>
     </div>
     <div class="registration-pane">
-        <form class="registration-form" action="src/check_duplicate.php" method="post">
+        <form class="registration-form" method="post">
             <h1>Register</h1>
             <fieldset>
                 <label for="start_time">Start Time</label>

@@ -1,5 +1,6 @@
 <?php 
-    // retrieve submitted data
+    include_once 'database.php';
+
     $slot_id = $_POST['start_time'];
     $project_title = $_POST['project_title'];
     $name = $_POST['name'];
@@ -10,11 +11,10 @@
     $phone = $_POST['phone'];
     $phone_concat = "(" . $phone['first_digit_group'] . ")-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
 
-    $conn = require 'connect_to_db.php';
-    $stmt = mysqli_prepare($conn, "INSERT INTO studentprojects VALUES (?, ?, ?, ?, ?, ?, DEFAULT);");
-    mysqli_stmt_bind_param($stmt, "isssss", $student_id, $fname, $lname, $email, $phone_concat, $project_title);
-    mysqli_stmt_execute($stmt);
-    mysqli_close($conn);
+    $db = $_SESSION['db'];
+    $sql = "INSERT INTO studentprojects VALUES (?, ?, ?, ?, ?, ?, DEFAULT);";
+    $types = "isssss";
+    $res = $db->execute_prepared_stmt($sql, $types, $student_id, $fname, $lname, $email, $phone_concat, $project_title);
     
     // route back to index.php
     if (isset($_SERVER["HTTP_REFERER"])) {
