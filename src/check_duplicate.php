@@ -1,21 +1,14 @@
 <?php
-    // safeguard against SQL injection
-    function preventSQLInjection(&$fields) {
-        foreach ($fields as &$input) {
-            is_array($input) ? preventSQLInjection($input) : $input = addslashes($input);
-        }
-    }
-
-    preventSQLInjection($_POST);
-
     $student_id = $_POST['student_id'];
     $conn = require 'connect_to_db.php';
 
-    $sql = "SELECT student_id FROM studentprojects WHERE student_id = $student_id;";
-    $query = mysqli_query($conn, $sql);
-    mysqli_close($conn);
+    // prepared statement to prevent SQL injection
+    $stmt = mysqli_prepare($conn, "SELECT student_id FROM studentprojects WHERE student_id = ?;");
+    mysqli_stmt_bind_param($stmt, "i", $student_id);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
     
-    $resCount = mysqli_num_rows($query);
+    $resCount = mysqli_num_rows($res);
     if ($resCount > 0) {
         echo 'here';
         // ask user if they want to update their selection

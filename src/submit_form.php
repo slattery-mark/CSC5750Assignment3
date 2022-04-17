@@ -9,13 +9,11 @@
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $phone_concat = "(" . $phone['first_digit_group'] . ")-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
-    
-    $sql = "INSERT INTO studentprojects VALUES ($student_id, '$fname', '$lname', '$email', '$phone_concat', '$project_title');";
-    $sql .= "INSERT INTO registration VALUES (DEFAULT, $student_id, $slot_id);";
-    $sql .= "UPDATE timeframes SET available_seats = available_seats - 1 WHERE slot_id = $slot_id;";
+
     $conn = require 'connect_to_db.php';
-    
-    mysqli_multi_query($conn, $sql);
+    $stmt = mysqli_prepare($conn, "INSERT INTO studentprojects VALUES (?, ?, ?, ?, ?, ?, DEFAULT);");
+    mysqli_stmt_bind_param($stmt, "isssss", $student_id, $fname, $lname, $email, $phone_concat, $project_title);
+    mysqli_stmt_execute($stmt);
     mysqli_close($conn);
     
     // route back to index.php
