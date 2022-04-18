@@ -21,7 +21,7 @@
         $student_id = $_SESSION['student_id'];
         $email = $_SESSION['email'];
         $phone = $_SESSION['phone'];
-        $phone_concat = "(" . $phone['first_digit_group'] . ")-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
+        $phone_concat = $phone['first_digit_group'] . "-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
 
         $db = $_SESSION['db'];
 

@@ -162,8 +162,8 @@
             </fieldset>
             <fieldset>
                 <label for="student-id">Student ID</label>
-                <input type="text" id="student-id" name="student_id" placeholder="###" minlength=3 maxlength=3
-                    pattern="[0-9]+" title="Must be 3 digits." required>
+                <input type="text" id="student-id" name="student_id" placeholder="#########" minlength=8 maxlength=8
+                    pattern="[0-9]+" title="Must be 8 digits." required>
             </fieldset>
             <fieldset>
                 <label for="email">Email</label>
