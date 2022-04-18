@@ -5,11 +5,52 @@
     // functions
     function set_student_data() {
         $_SESSION['slot_id'] = $_POST['slot_id'];
-        $_SESSION['project_title'] = $_POST['project_title'];
+        $_SESSION['project_title'] = trim($_POST['project_title']);
         $_SESSION['name'] = $_POST['name'];
+        $_SESSION['name']['fname'] = trim($_POST['name']['fname']);
+        $_SESSION['name']['lname'] = trim($_POST['name']['lname']);
         $_SESSION['student_id'] = $_POST['student_id'];
         $_SESSION['email'] = $_POST['email'];
+        $_SESSION['email']['address'] = trim($_POST['email']['address']);
+        $_SESSION['email']['host'] = trim($_POST['email']['host']);
+        $_SESSION['email']['site'] = trim($_POST['email']['site']);
         $_SESSION['phone'] = $_POST['phone'];
+        $_SESSION['phone']['first_digit_group'] = trim($_POST['phone']['first_digit_group']);
+        $_SESSION['phone']['second_digit_group'] = trim($_POST['phone']['second_digit_group']);
+        $_SESSION['phone']['third_digit_group'] = trim($_POST['phone']['third_digit_group']);
+
+        if (empty($_SESSION['slot_id'])) {
+            echo "<script>alert('Invalid timeframe. Must select valid start time.')</script>";
+            return false;
+        }
+
+        if (strlen($_SESSION['project_title']) < 1 || strlen($_SESSION['project_title']) > 50) {
+            echo "<script>alert('Invalid project title. Must contain 1-50 characters')</script>";
+            return false;
+        }
+
+        if (strlen($_SESSION['name']['fname']) < 1 || strlen($_SESSION['name']['lname']) < 1 || strlen($_SESSION['name']['fname']) > 30 || strlen($_SESSION['name']['lname']) > 30) {
+            echo "<script>alert('Invalid name. First and last name must contain 1-30 letters.')</script>";
+            return false;
+        }
+
+        if (strlen($_SESSION['student_id']) != 8) {
+            echo "<script>alert('Invalid student id. Must be 8 digits.')</script>";
+            return false;
+        }
+
+        if (strlen($_SESSION['email']['address']) < 1 || strlen($_SESSION['email']['host']) < 1 || strlen($_SESSION['email']['site']) < 1 
+            || strlen($_SESSION['email']['domain']) > 40 || strlen($_SESSION['email']['domain']) > 19 || strlen($_SESSION['email']['domain']) > 19) {
+            echo "<script>alert('Invalid email. Address must contain 1-40 alphanumeric characters, host must contain 1-19 alphanumeric characters, and site must contain 1-19 alphanumeric characters.')</script>";
+            return false;
+        }
+        
+        if (strlen($_SESSION['phone']['first_digit_group']) != 3 || strlen($_SESSION['phone']['second_digit_group']) != 3 || strlen($_SESSION['phone']['third_digit_group']) != 4) {
+            echo "<script>alert('Invalid phone number. First group must be 3 digits, second group must be 3 digits, and last group must be 4 digits.')</script>";
+            return false;
+        }
+
+        return true;
     }
 
     function submit_form() {
@@ -164,7 +205,7 @@
 
     // form submission function
     if(isset($_POST['student_id'])) {
-        set_student_data();
+        if (!set_student_data()) return;
         $student_id = $_POST['student_id'];
     
         $db = $_SESSION['db'];
