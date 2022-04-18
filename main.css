@@ -62,7 +62,6 @@ input, select {
 .calendar {
     border-collapse: collapse;
     height: 100%;
-    min-height: 800px;
     table-layout: fixed;
     width: 100%;
 }
@@ -73,6 +72,7 @@ input, select {
 
 .calendar tr {
     overflow: hidden;
+    height: 4%;
 }
 
 .calendar th {
@@ -81,10 +81,10 @@ input, select {
     width: 33%;
 }
 
-
 .calendar td {
     padding: 0;
 }
+
 .calendar h2 {
     margin: 0;
     padding: 0;
