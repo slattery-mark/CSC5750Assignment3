@@ -133,7 +133,7 @@
             <h1>Register</h1>
             <fieldset>
                 <label for="start_time">Start Time</label>
-                <select id="start_time" name="slot_id">
+                <select id="start_time" name="slot_id" required>
                     <?php
                         $i = 0;
                         foreach($timeframes_results as $timeframe) { 
