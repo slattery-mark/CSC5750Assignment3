@@ -129,9 +129,9 @@
         </table>
     </div>
     <div class="registration-pane">
-        <form class="registration-form" method="post">
+        <form class="registration-form validated-form" method="post">
             <h1>Register</h1>
-            <fieldset>
+            <fieldset class="content-box">
                 <label for="start_time">Start Time</label>
                 <select id="start_time" name="slot_id" required>
                     <?php
@@ -148,13 +148,13 @@
                     ?>
                 </select>
             </fieldset>
-            <fieldset>
+            <fieldset class="content-box">
                 <label for="project-title">Project Title</label>
                 <input type="text" id="project-title" name="project_title" placeholder="Title"
                     value="<?php if (!empty($_SESSION['project_title'])) echo $_SESSION['project_title']; ?>"
                     maxlength=50 title="Must contain 1-50 characters" required>
             </fieldset>
-            <fieldset>
+            <fieldset class="content-box">
                 <label for="name">Name</label>
                 <input type="text" id="fname" name="name[fname]" placeholder="First Name"
                     value="<?php if (!empty($_SESSION['name']['fname'])) echo $_SESSION['name']['fname']; ?>"
@@ -163,13 +163,13 @@
                     value="<?php if (!empty($_SESSION['name']['lname'])) echo $_SESSION['name']['lname']; ?>"
                     maxlength=30 pattern="[A-Za-z]+" title="Must contain 1-30 letters." required>
             </fieldset>
-            <fieldset>
+            <fieldset class="content-box">
                 <label for="student-id">Student ID</label>
                 <input type="text" id="student-id" name="student_id" placeholder="#########"
                     value="<?php if (!empty($_SESSION['student_id'])) echo $_SESSION['student_id']; ?>"
                     minlength=8 maxlength=8 pattern="[0-9]+" title="Must be 8 digits.">
             </fieldset>
-            <fieldset>
+            <fieldset class="content-box">
                 <label for="email">Email</label>
                 <input type="text" id="email-address" name="email[address]" placeholder="address"
                     value="<?php if (!empty($_SESSION['email']['address'])) echo $_SESSION['email']['address']; ?>"
@@ -183,7 +183,7 @@
                     value="<?php if (!empty($_SESSION['email']['site'])) echo $_SESSION['email']['site']; ?>"
                     maxlength=19 title="Must contain 1-19 alphanumeric characters." required>
             </fieldset>
-            <fieldset>
+            <fieldset class="content-box">
                 <label for="phone">Phone</label>
                 <input type="text" id="first-digit-group" name="phone[first_digit_group]" placeholder="###"
                     value="<?php if (!empty($_SESSION['phone']['first_digit_group'])) echo $_SESSION['phone']['first_digit_group']; ?>"
@@ -200,6 +200,9 @@
             <button type="submit" id="registration-form__submit-btn">Submit</button>
         </form>
     </div>
+
+    <script src="scripts/formvalidator.js"></script>
+    <script src="scripts/formvalidation.js"></script>
 </body>
 
 </html>

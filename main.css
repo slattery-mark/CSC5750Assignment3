@@ -192,12 +192,25 @@ input, select {
 
 .registration-form input, .registration-form select {
     box-sizing: border-box;
-    border: 2px solid var(--clr-primary);
+    border: 2px solid var(--clr-secondary);
     font-size: clamp(.9rem, 2vw, 1rem);
     height: 32px;
     margin: 0 7px;
     padding: 0 7px;
     width: 100%;
+}
+
+.valid-field {
+    border: 2px solid var(--clr-primary) !important;
+}
+
+.invalid-field {
+    border: 2px solid red !important;
+}
+
+.disable-submit {
+    background-color: #b0b0b0 !important;
+    border-color: #b0b0b0 !important;
 }
 
 #registration-form__submit-btn {
