@@ -20,6 +20,7 @@
         $lname = $name['lname'];
         $student_id = $_SESSION['student_id'];
         $email = $_SESSION['email'];
+        $email_concat = $email['address'] . "@" . $email['host'] . "." . $email['site'];
         $phone = $_SESSION['phone'];
         $phone_concat = $phone['first_digit_group'] . "-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
 
@@ -27,7 +28,7 @@
 
         $sql = "INSERT INTO studentprojects VALUES (?, ?, ?, ?, ?, ?, DEFAULT);";
         $types = "isssss";
-        $db->execute_prepared_stmt($sql, $types, $student_id, $fname, $lname, $email, $phone_concat, $project_title);
+        $db->execute_prepared_stmt($sql, $types, $student_id, $fname, $lname, $email_concat, $phone_concat, $project_title);
         
         $sql = "INSERT INTO registration VALUES (DEFAULT, ?, ?);";
         $types = "ii";

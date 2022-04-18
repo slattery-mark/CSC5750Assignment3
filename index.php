@@ -167,15 +167,23 @@
             </fieldset>
             <fieldset>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email@provider.com" maxlength=50
-                    title="Must match 'email@provider.com' format." required>
+                <input type="text" id="email-address" name="email[address]" placeholder="address" maxlength=40
+                    title="Must contain 1-40 alphanumeric characters" required>
+                <p>@</p>
+                <input type="text" id="email-host" name="email[host]" placeholder="host" maxlength=19
+                    title="Must contain 1-19 alphanumeric characters" required>
+                <p>.</p>
+                <input type="text" id="email-site" name="email[site]" placeholder="site" maxlength=19
+                    title="Must contain 1-19 alphanumeric characters" required>
             </fieldset>
             <fieldset>
                 <label for="phone">Phone</label>
                 <input type="text" id="first-digit-group" name="phone[first_digit_group]" placeholder="###" minlength=3
                     maxlength=3 pattern="[0-9]+" title="Must be 3 digits." required>
+                <p>-</p>
                 <input type="text" id="second-digit-group" name="phone[second_digit_group]" placeholder="###"
                     minlength=3 maxlength=3 pattern="[0-9]+" title="Must be 3 digits." required>
+                <p>-</p>
                 <input type="text" id="third-digit-group" name="phone[third_digit_group]" placeholder="####" minlength=4
                     maxlength=4 pattern="[0-9]+" title="Must be 4 digits." required>
             </fieldset>
