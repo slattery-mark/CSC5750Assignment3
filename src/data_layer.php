@@ -55,14 +55,15 @@
         $lname = $name['lname'];
         $student_id = $_SESSION['student_id'];
         $email = $_SESSION['email'];
+        $email_concat = $email['address'] . "@" . $email['host'] . "." . $email['site'];
         $phone = $_SESSION['phone'];
-        $phone_concat = "(" . $phone['first_digit_group'] . ")-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
+        $phone_concat = $phone['first_digit_group'] . "-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
 
         $db = $_SESSION['db'];
 
         $sql = "UPDATE studentprojects SET first_name=?, last_name=?, email=?, phone_number=?, project_title=?, registration_time=DEFAULT WHERE student_id=?;";
         $types = "sssssi";
-        $db->execute_prepared_stmt($sql, $types, $fname, $lname, $email, $phone_concat, $project_title, $student_id);
+        $db->execute_prepared_stmt($sql, $types, $fname, $lname, $email_concat, $phone_concat, $project_title, $student_id);
 
         $sql = "UPDATE timeframes SET available_seats=available_seats+1 WHERE slot_id=(SELECT slot_id FROM registration WHERE student_id=?);";
         $types = "i";
