@@ -1,6 +1,6 @@
 <?php
     // classes
-    require 'database.php';
+    require '/src/database.php';
 
     // functions
     function set_student_data() {
@@ -216,7 +216,7 @@
         $resCount = mysqli_num_rows($res);
         echo $resCount;
         if ($resCount > 0) {
-            header("Location: src/update_registration.php");
+            header("Location: /src/update_registration.php");
         }
         else submit_form();
     }

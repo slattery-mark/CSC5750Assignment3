@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <?php include '../templates/head.php'; ?>
-    <?php require_once 'data_layer.php'; ?>
-    <link rel="stylesheet" href="../main.css">
+    <?php include '/templates/head.php'; ?>
+    <?php require_once '/src/data_layer.php'; ?>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body id="update-page">
@@ -12,10 +12,10 @@
         if (isset($_POST['confirm'])) {
             if ($_POST['confirm'] == 'Yes') {
                 edit_form();
-                header("Location: ../index.php");
+                header("Location: /index.php");
             }
             else if ($_POST['confirm'] == 'No') {
-                header("Location: ../index.php");
+                header("Location: /index.php");
             } 
         }
     ?>

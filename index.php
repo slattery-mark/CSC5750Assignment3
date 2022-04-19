@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <?php include 'templates/head.php'; ?>
-    <?php require_once 'src/data_layer.php'; ?>
-    <link rel="stylesheet" href="main.css">
+    <?php include '/templates/head.php'; ?>
+    <?php require_once '/src/data_layer.php'; ?>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
