@@ -1,6 +1,6 @@
 <?php
     // classes
-    require '/src/database.php';
+    require 'database.php';
 
     // functions
     function set_student_data() {

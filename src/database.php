@@ -4,7 +4,7 @@
 
         private function connect() {
             try {
-                $this->conn = mysqli_connect('cdc5750assignment3.cdnig6kxgkjc.us-east-1.rds.amazonaws.com', 'admin', 'wwvuoIFmiqzBsOn8Z8gt', 'csc5750assignment3');
+                $this->conn = mysqli_connect($RDS_HOSTNAME, $RDS_USERNAME, $RDS_PASSWORD, $RDS_DB_NAME, $RDS_PORT);
             }
             catch (Exception $e) {
                 echo nl2br("Connection error:\n" . $e);
