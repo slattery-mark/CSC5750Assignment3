@@ -3,8 +3,8 @@
 
 <head>
     <?php include '../templates/head.php'; ?>
-    <?php require_once 'data_layer.php'; ?>
     <link rel="stylesheet" href="../styles/main.css">
+    <?php require_once 'data_layer.php'; ?>
 </head>
 
 <body id="update-page">
@@ -12,10 +12,9 @@
         if (isset($_POST['confirm'])) {
             if ($_POST['confirm'] == 'Yes') {
                 edit_form();
-                header("Location: /index.php");
             }
             else if ($_POST['confirm'] == 'No') {
-                header("Location: /index.php");
+                header("Location: ../index.php");
             } 
         }
     ?>
@@ -23,12 +22,16 @@
     <p>You've previously registered with the following information:</p>
 
     <?php
-            $sql = "SELECT * FROM studentprojects WHERE student_id=?";
             $student_id = $_SESSION['student_id'];
-            $types = "i";
-            $db = $_SESSION['db'];
-            $res = $db->execute_prepared_stmt($sql, $types, $student_id);
+            $conn = $_SESSION['conn'];
+
+            // $sql = "SELECT * FROM studentprojects WHERE student_id=?";
+            // $types = "i";
+            // $res = $db->execute_prepared_stmt($sql, $types, $student_id);
+            $sql = "SELECT student_id, first_name, last_name, email, phone_number, project_title FROM studentprojects WHERE student_id=$student_id;";
+            $res = $conn->execute_stmt($sql);
             $data = mysqli_fetch_row($res);
+
             echo    '<table class="prior-registration-table">
                         <tr>
                             <th>Project Title</th>
@@ -62,7 +65,7 @@
     <form class="update-form" method="post">
         <h2>Update Registration?</h2>
         <input type="submit" name="confirm" value="Yes"><br />
-        <input type="submit" name="confirm" value="No"><br />
+        <input type="submit" name="confirm" value="No">
     </form>
 
 </html>

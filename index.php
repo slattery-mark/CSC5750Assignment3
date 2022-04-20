@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
     <div class="schedule-pane">
         <table class="calendar">
             <tr>

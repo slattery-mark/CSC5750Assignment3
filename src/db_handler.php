@@ -7,25 +7,21 @@
                 $this->conn = mysqli_connect($_SERVER['RDS_HOSTNAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD'], $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_PORT']);
             }
             catch (Exception $e) {
-                echo "<script>console.log('connection error');</script>";
+                echo "<script>alert('connection error');</script>";
                 echo nl2br("Connection error:\n" . $e);
             }
         }
     
-        public function execute_prepared_stmt(string $sql, string $types, $param) {
-            echo "<script>console.log('4');</script>";
+        public function execute_prepared_stmt(string $sql, string $types, &...$params) {
             $this->connect();
-            echo "<script>console.log('5');</script>";
+
+            print_r($params);
             $stmt = mysqli_prepare($this->conn, $sql);
-            echo "<script>console.log('6');</script>";
-            mysqli_stmt_bind_param($stmt, $types, $param);
-            echo "<script>console.log('7');</script>";
+            mysqli_stmt_bind_param($stmt, $types, $params);
             mysqli_stmt_execute($stmt);
-            echo "<script>console.log('8');</script>";
             $res = mysqli_stmt_get_result($stmt);
-            echo "<script>console.log('9');</script>";
             mysqli_close($this->conn);
-            echo "<script>console.log('10');</script>";
+
             return $res;
         }
     
