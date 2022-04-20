@@ -1,6 +1,6 @@
 <?php
     // classes
-    require 'database.php';
+    require_once 'db_handler.php';
 
     // functions
     function set_student_data() {
@@ -44,7 +44,7 @@
             echo "<script>alert('Invalid email. Address must contain 1-40 alphanumeric characters, host must contain 1-19 alphanumeric characters, and site must contain 1-19 alphanumeric characters.')</script>";
             return false;
         }
-        
+
         if (strlen($_SESSION['phone']['first_digit_group']) != 3 || strlen($_SESSION['phone']['second_digit_group']) != 3 || strlen($_SESSION['phone']['third_digit_group']) != 4) {
             echo "<script>alert('Invalid phone number. First group must be 3 digits, second group must be 3 digits, and last group must be 4 digits.')</script>";
             return false;
@@ -65,19 +65,19 @@
         $phone = $_SESSION['phone'];
         $phone_concat = $phone['first_digit_group'] . "-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
 
-        $db = $_SESSION['db'];
+        $conn = $_SESSION['conn'];
 
-        $sql = "INSERT INTO studentprojects VALUES (?, ?, ?, ?, ?, ?, DEFAULT);";
+        $sql = "INSERT INTO studentprojects VALUES (?, '?', '?', '?', '?', '?', DEFAULT);";
         $types = "isssss";
-        $db->execute_prepared_stmt($sql, $types, $student_id, $fname, $lname, $email_concat, $phone_concat, $project_title);
+        $conn->execute_prepared_stmt($sql, $types, $student_id, $fname, $lname, $email_concat, $phone_concat, $project_title);
         
         $sql = "INSERT INTO registration VALUES (DEFAULT, ?, ?);";
         $types = "ii";
-        $db->execute_prepared_stmt($sql, $types, $student_id, $slot_id);
+        $conn->execute_prepared_stmt($sql, $types, $student_id, $slot_id);
 
         $sql = "UPDATE timeframes SET available_seats = available_seats - 1 WHERE slot_id = ?";
         $types = "i";
-        $db->execute_prepared_stmt($sql, $types, $slot_id);
+        $conn->execute_prepared_stmt($sql, $types, $slot_id);
         
         // route back to index.php
         if (isset($_SERVER["HTTP_REFERER"])) {
@@ -100,23 +100,23 @@
         $phone = $_SESSION['phone'];
         $phone_concat = $phone['first_digit_group'] . "-" . $phone['second_digit_group'] . "-" . $phone['third_digit_group'];
 
-        $db = $_SESSION['db'];
+        $conn = $_SESSION['conn'];
 
         $sql = "UPDATE studentprojects SET first_name=?, last_name=?, email=?, phone_number=?, project_title=?, registration_time=DEFAULT WHERE student_id=?;";
         $types = "sssssi";
-        $db->execute_prepared_stmt($sql, $types, $fname, $lname, $email_concat, $phone_concat, $project_title, $student_id);
+        $conn->execute_prepared_stmt($sql, $types, $fname, $lname, $email_concat, $phone_concat, $project_title, $student_id);
 
         $sql = "UPDATE timeframes SET available_seats=available_seats+1 WHERE slot_id=(SELECT slot_id FROM registration WHERE student_id=?);";
         $types = "i";
-        $db->execute_prepared_stmt($sql, $types, $student_id);
+        $conn->execute_prepared_stmt($sql, $types, $student_id);
 
         $sql = "UPDATE registration SET slot_id=? WHERE student_id=?;";
         $types = "ii";
-        $db->execute_prepared_stmt($sql, $types, $new_slot_id, $student_id);
+        $conn->execute_prepared_stmt($sql, $types, $new_slot_id, $student_id);
 
         $sql = "UPDATE timeframes SET available_seats=available_seats-1 WHERE slot_id=?";
         $types = "i";
-        $db->execute_prepared_stmt($sql, $types, $new_slot_id);
+        $conn->execute_prepared_stmt($sql, $types, $new_slot_id);
         
         // route back to index.php
         if (isset($_SERVER["HTTP_REFERER"])) {
@@ -162,7 +162,7 @@
     }
 
     function retrieve_student_data() {
-        $db = $_SESSION['db'];
+        $conn = $_SESSION['conn'];
         $results = array();
         foreach(range(0, 5) as $i) {
             $sql = 
@@ -175,7 +175,7 @@
                 WHERE r.slot_id = $i + 1
                 ORDER BY s.registration_time ASC;";
 
-            $res = $db->execute_stmt($sql);
+            $res = $conn->execute_stmt($sql);
             $results[$i] = array();
             
             $j = 0;
@@ -197,27 +197,32 @@
     // "main"
     session_start();
 
-    $db = new Database;
-    $_SESSION['db'] = $db;
+    $conn = new DB_Handler;
+    $_SESSION['conn'] = $conn;
     
-    $timeframes_results = $db->execute_stmt("SELECT date_time, available_seats FROM timeframes");
+    $timeframes_results = $conn->execute_stmt("SELECT date_time, available_seats FROM timeframes");
     $student_project_results = retrieve_student_data();
 
     // form submission function
     if(isset($_POST['student_id'])) {
+        echo "<script>console.log('0');</script>";
         if (!set_student_data()) return;
-        $student_id = $_POST['student_id'];
-    
-        $db = $_SESSION['db'];
+        echo "<script>console.log('1');</script>";
+        $student_id = $_SESSION['student_id'];
+        $conn = $_SESSION['conn'];
+        echo "<script>console.log('2');</script>";
         $sql = "SELECT student_id FROM studentprojects WHERE student_id = ?;";
         $types = "i";
-        $res = $db->execute_prepared_stmt($sql, $types, $student_id);
+        echo "<script>console.log('3');</script>";
+        $res = $conn->execute_prepared_stmt($sql, $types, $student_id);
         
         $resCount = mysqli_num_rows($res);
-        echo $resCount;
+        
+        
         if ($resCount > 0) {
-            header("Location: /src/update_registration.php");
+            header("Location: update_registration.php");
         }
         else submit_form();
+        
     }
 ?>

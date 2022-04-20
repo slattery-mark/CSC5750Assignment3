@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <div class="schedule-pane">
         <table class="calendar">
             <tr>
@@ -158,16 +159,16 @@
                 <label for="name">Name</label>
                 <input type="text" id="fname" name="name[fname]" placeholder="First Name"
                     value="<?php if (!empty($_SESSION['name']['fname'])) echo $_SESSION['name']['fname']; ?>"
-                    maxlength=30 pattern="[A-Za-z]+" title="Must contain 1-30 letters." required>
+                    maxlength=30 pattern="^[A-Za-z]+$" title="Must contain 1-30 letters." required>
                 <input type="text" id="lname" name="name[lname]" placeholder="Last Name"
                     value="<?php if (!empty($_SESSION['name']['lname'])) echo $_SESSION['name']['lname']; ?>"
-                    maxlength=30 pattern="[A-Za-z]+" title="Must contain 1-30 letters." required>
+                    maxlength=30 pattern="^[A-Za-z]+$" title="Must contain 1-30 letters." required>
             </fieldset>
             <fieldset class="content-box">
                 <label for="student-id">Student ID</label>
                 <input type="text" id="student-id" name="student_id" placeholder="#########"
-                    value="<?php if (!empty($_SESSION['student_id'])) echo $_SESSION['student_id']; ?>"
-                    minlength=8 maxlength=8 pattern="[0-9]+" title="Must be 8 digits.">
+                    value="<?php if (!empty($_SESSION['student_id'])) echo $_SESSION['student_id']; ?>" minlength=8
+                    maxlength=8 pattern="^[0-9]+$" title="Must be 8 digits.">
             </fieldset>
             <fieldset class="content-box">
                 <label for="email">Email</label>
@@ -187,15 +188,15 @@
                 <label for="phone">Phone</label>
                 <input type="text" id="first-digit-group" name="phone[first_digit_group]" placeholder="###"
                     value="<?php if (!empty($_SESSION['phone']['first_digit_group'])) echo $_SESSION['phone']['first_digit_group']; ?>"
-                    minlength=3 maxlength=3 pattern="[0-9]+" title="Must be 3 digits." required>
+                    minlength=3 maxlength=3 pattern="^[0-9]+$" title="Must be 3 digits." required>
                 <p>-</p>
                 <input type="text" id="second-digit-group" name="phone[second_digit_group]" placeholder="###"
                     value="<?php if (!empty($_SESSION['phone']['second_digit_group'])) echo $_SESSION['phone']['second_digit_group']; ?>"
-                    minlength=3 maxlength=3 pattern="[0-9]+" title="Must be 3 digits">
+                    minlength=3 maxlength=3 pattern="^[0-9]+$" title="Must be 3 digits">
                 <p>-</p>
                 <input type="text" id="third-digit-group" name="phone[third_digit_group]" placeholder="####"
                     value="<?php if (!empty($_SESSION['phone']['third_digit_group'])) echo $_SESSION['phone']['third_digit_group']; ?>"
-                    minlength=4 maxlength=4 pattern="[0-9]+" title="Must be 4 digits." required>
+                    minlength=4 maxlength=4 pattern="^[0-9]+$" title="Must be 4 digits." required>
             </fieldset>
             <button type="submit" id="registration-form__submit-btn">Submit</button>
         </form>

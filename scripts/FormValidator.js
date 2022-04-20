@@ -39,7 +39,6 @@ var Validator = /** @class */ (function () {
         }
 
         isValid() {
-            console.log("testing " + this.input.minLength);
             var minLength = this.input.minLength;
             var maxLength = this.input.maxLength;
             var pattern = this.input.pattern;
