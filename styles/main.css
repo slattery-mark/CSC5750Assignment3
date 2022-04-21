@@ -222,7 +222,7 @@ input, select {
 #registration-form_submit-btn.disabled-submit {
     background-color: #b0b0b0;
     border-color: #b0b0b0;
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
 
 #registration-form__submit-btn:hover {
