@@ -208,12 +208,6 @@ input, select {
     border: 2px solid red !important;
 }
 
-.disable-submit {
-    background-color: #b0b0b0 !important;
-    border-color: #b0b0b0 !important;
-    cursor: not-allowed;
-}
-
 #registration-form__submit-btn {
     background-color: var(--clr-primary);
     border: 2px solid var(--clr-primary);
@@ -223,6 +217,12 @@ input, select {
     padding: 7px 0;
     font: inherit;
     transition: .25s;
+}
+
+#registration-form_submit-btn:disabled {
+    background-color: #b0b0b0;
+    border-color: #b0b0b0;
+    cursor: not-allowed;
 }
 
 #registration-form__submit-btn:hover {
