@@ -219,7 +219,7 @@ input, select {
     transition: .25s;
 }
 
-#registration-form_submit-btn:disabled {
+#registration-form_submit-btn.disabled-submit {
     background-color: #b0b0b0;
     border-color: #b0b0b0;
     cursor: not-allowed;
