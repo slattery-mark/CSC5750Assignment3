@@ -211,7 +211,7 @@ input, select {
 .disable-submit {
     background-color: #b0b0b0 !important;
     border-color: #b0b0b0 !important;
-    cursor: default;
+    cursor: not-allowed;
 }
 
 #registration-form__submit-btn {
